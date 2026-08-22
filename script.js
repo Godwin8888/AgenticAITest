@@ -284,6 +284,91 @@ function initEnquiryForm() {
 }
 
 /* ============================================
+   Ebook Lead Magnet Modal
+   ============================================ */
+function initEbookModal() {
+  const modal = document.getElementById('ebookModal');
+  const closeBtn = document.getElementById('closeModal');
+  const ebookForm = document.getElementById('ebookForm');
+  const ebookEmail = document.getElementById('ebookEmail');
+  const ebookError = document.getElementById('ebookError');
+
+  if (!modal) return;
+
+  // Show modal after 10 seconds
+  setTimeout(() => {
+    modal.removeAttribute('hidden');
+    ebookEmail.focus();
+  }, 10000);
+
+  // Close modal on close button
+  closeBtn.addEventListener('click', () => {
+    modal.setAttribute('hidden', '');
+  });
+
+  // Close modal on overlay click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal.querySelector('.modal-overlay')) {
+      modal.setAttribute('hidden', '');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+      modal.setAttribute('hidden', '');
+    }
+  });
+
+  // Form submission
+  ebookForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    ebookError.textContent = '';
+
+    const email = ebookEmail.value.trim();
+    const company = document.getElementById('ebookCompany').value.trim();
+
+    // Validate email
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      ebookError.textContent = 'Please enter a valid email address';
+      ebookEmail.setAttribute('aria-invalid', 'true');
+      return;
+    }
+
+    ebookEmail.removeAttribute('aria-invalid');
+
+    // For now, just show success (you can connect to your email service)
+    try {
+      const submitBtn = ebookForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // Simulate sending (replace with real endpoint)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Show success
+      ebookForm.innerHTML = `
+        <div style="text-align: center; padding: var(--space-4);">
+          <svg viewBox="0 0 48 48" width="48" height="48" fill="none" style="color: var(--color-neon-green); margin: 0 auto var(--space-3);">
+            <circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M15 24.5 21 30.5 33 17.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 style="color: var(--color-neon-green); margin: var(--space-3) 0 var(--space-2);">Check Your Email!</h3>
+          <p style="color: var(--color-text-muted); margin: 0;">Your free security guide is on the way. Check your inbox in a few seconds.</p>
+        </div>
+      `;
+
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        modal.setAttribute('hidden', '');
+      }, 3000);
+    } catch (err) {
+      ebookError.textContent = 'Something went wrong. Please try again.';
+    }
+  });
+}
+
+/* ============================================
    Footer year
    ============================================ */
 function setFooterYear() {
@@ -296,5 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFadeInObserver();
   initTestimonialCarousel();
   initEnquiryForm();
+  initEbookModal();
   setFooterYear();
 });
