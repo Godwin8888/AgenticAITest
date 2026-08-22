@@ -335,6 +335,52 @@
   </div>
 </footer>
 
+<!-- WhatsApp Chatbot Widget -->
+<div id="whatsappWidget" class="whatsapp-widget" aria-label="WhatsApp Chat">
+  <button type="button" class="whatsapp-toggle" id="whatsappToggle" aria-expanded="false" aria-controls="whatsappPanel">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.946 1.25c-1.526.749-2.753 1.862-3.582 3.261C2.524 12.402 2.712 17.375 5.906 20.59c.987.876 2.318 1.354 3.662 1.354 1.46 0 2.846-.421 4.04-1.174h.006c1.280-.787 2.368-1.807 3.114-2.978.746-1.171 1.082-2.489 1.012-3.844-.056-1.667-.692-3.194-1.797-4.272-1.104-1.079-2.384-1.63-3.833-1.63z"/>
+    </svg>
+    <span class="whatsapp-badge">1</span>
+  </button>
+
+  <div id="whatsappPanel" class="whatsapp-panel" hidden>
+    <div class="whatsapp-header">
+      <h3>Chat with us</h3>
+      <p>We typically reply in minutes</p>
+      <button type="button" class="whatsapp-close" id="closeWhatsapp" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="m5 5 14 14M19 5 5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="whatsapp-body">
+      <p class="whatsapp-intro">Select a query or send your own message:</p>
+
+      <div class="whatsapp-suggestions">
+        <button type="button" class="whatsapp-suggestion" data-message="Tell me about your security audit services">
+          🛡️ Security Audit
+        </button>
+        <button type="button" class="whatsapp-suggestion" data-message="I need help with cloud migration">
+          ☁️ Cloud Migration
+        </button>
+        <button type="button" class="whatsapp-suggestion" data-message="What managed IT support do you offer?">
+          🖥️ Managed IT Support
+        </button>
+        <button type="button" class="whatsapp-suggestion" data-message="I want to discuss cybersecurity solutions">
+          🔐 Cybersecurity
+        </button>
+        <button type="button" class="whatsapp-suggestion" data-message="Get me a free consultation">
+          📞 Free Consultation
+        </button>
+      </div>
+    </div>
+
+    <div class="whatsapp-footer">
+      <p>Reply from our team</p>
+    </div>
+  </div>
+</div>
+
 <!-- Cyberpunk Ebook Lead Magnet Modal -->
 <div id="ebookModal" class="modal" hidden>
   <div class="modal-overlay"></div>

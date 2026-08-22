@@ -284,6 +284,69 @@ function initEnquiryForm() {
 }
 
 /* ============================================
+   WhatsApp Chatbot Widget
+   ============================================ */
+const WHATSAPP_NUMBER = '91688888';
+const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+function initWhatsappWidget() {
+  const widget = document.getElementById('whatsappWidget');
+  const toggle = document.getElementById('whatsappToggle');
+  const panel = document.getElementById('whatsappPanel');
+  const closeBtn = document.getElementById('closeWhatsapp');
+  const suggestions = document.querySelectorAll('.whatsapp-suggestion');
+
+  if (!widget || !toggle || !panel) return;
+
+  // Toggle panel
+  toggle.addEventListener('click', () => {
+    const isOpen = !panel.hasAttribute('hidden');
+    if (isOpen) {
+      panel.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      panel.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close panel
+  closeBtn.addEventListener('click', () => {
+    panel.setAttribute('hidden', '');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !panel.hasAttribute('hidden')) {
+      panel.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Handle suggestion clicks
+  suggestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const message = btn.getAttribute('data-message');
+      openWhatsapp(message);
+    });
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!widget.contains(e.target) && !panel.hasAttribute('hidden')) {
+      panel.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+function openWhatsapp(message = '') {
+  const encodedMsg = message ? `?text=${encodeURIComponent(message)}` : '';
+  window.open(`${WHATSAPP_BASE_URL}${encodedMsg}`, '_blank');
+}
+
+/* ============================================
    Ebook Lead Magnet Modal
    ============================================ */
 function initEbookModal() {
@@ -382,5 +445,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialCarousel();
   initEnquiryForm();
   initEbookModal();
+  initWhatsappWidget();
   setFooterYear();
 });
