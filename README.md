@@ -29,6 +29,25 @@ SureWinTotoIT is a fictional IT services company offering managed IT support, cl
 ♿ **Accessible** — ARIA attributes, focus states, prefers-reduced-motion support
 📱 **Mobile Nav** — Hamburger menu, smooth transitions, fixed positioning gotcha handled
 
+## Screenshots
+
+### Desktop View
+![Desktop](https://via.placeholder.com/1280x800?text=Desktop+View)
+
+### Mobile View
+![Mobile](https://via.placeholder.com/375x812?text=Mobile+View)
+
+**Generate live screenshots:**
+```bash
+# Install Playwright browsers (first time only)
+npx playwright install
+
+# Take screenshots at multiple breakpoints
+node scripts/screenshot.js
+```
+
+Screenshots saved to `screenshots/` folder (desktop, tablet, mobile, full-page).
+
 ## Installation
 
 No build step required! Just open and serve:
