@@ -1,0 +1,27 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "A modern, fully responsive single-page marketing website for an IT services company. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step.",
+  "main": "script.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Godwin8888/AgenticAITest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Godwin8888/AgenticAITest/issues"
+  },
+  "homepage": "https://github.com/Godwin8888/AgenticAITest#readme",
+  "dependencies": {
+    "playwright": "^1.62.1"
+  }
+}
